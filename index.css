@@ -1,0 +1,62 @@
+body {
+  font-family     : sans-serif;
+  background-color: green;
+}
+
+.start {
+  display        : flex;
+  align-items    : center;
+  justify-content: center;
+  padding        : 100px;
+  box-sizing     : border-box;
+}
+
+.startButton {
+  width           : 200px;
+  height          : 100px;
+  position        : fixed;
+  top             : 30%;
+  left            : 50%;
+  margin-left     : -100px;
+  border          : 2px solid black;
+  border-radius   : 5px;
+  background-color: inherit;
+  font-size       : 100%;
+}
+
+.startButton:hover {
+  color           : white;
+  background-color: black;
+}
+
+.rules {
+  width           : 200px;
+  height          : 100px;
+  position        : fixed;
+  top             : 60%;
+  left            : 50%;
+  margin-left     : -100px;
+  border          : 2px solid white;
+  border-radius   : 5px;
+  background-color: inherit;
+  font-size       : 100%;
+  color           : white;
+}
+
+.rules:hover {
+  color           : black;
+  background-color: white;
+}
+
+.back {
+  border          : 2px solid white;
+  border-radius   : 5px;
+  background-color: inherit;
+  font-size       : 100%;
+  color           : white;
+}
+
+h1 {
+  text-align: center;
+  color     : black;
+}

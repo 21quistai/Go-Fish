@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Go Fish</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <h1> Go Fish <br></h1>
+  <div class="start" id="start">
+    <button class=" btn startButton" onclick="startGame()"> Start Game </button>
+    <button class=" btn rules" onclick="rules()" value="show the rules"> Rules </button>
+  </div>
+
+  <div id="rules">
+    <h1>How to play go fish <br> </h1>
+    <button class="btn back" name=" back" onclick="hideRules()"> Back </button>
+    <p>
+      During a turn the player asks another player if they have a particular rank of card. For example, the player may ask Kathy if she has any nines. If Kathy has any nines, then she must give all of her nines to the player. If Kathy doesn't have any nines, then she says "go fish".
+When you "go fish" you can take any card from the pool.
+If the player gets the cards they asked for, either from the pool or from Kathy, then the player gets another turn.
+If the player gets all four suits of the same rank, then they can put the cards face up in front of them. For example, if you already had a nine of hearts, clubs, and spades; then you picked up the nine of diamonds from the pool, you then get to place the set of nine cards down in front of you and you get another turn.</p>
+  </div>
+
+
+
+
+
+
+
+
+
+  <script src="gofish.js" charset="utf-8"></script>
+</body>
+
+</html>
