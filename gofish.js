@@ -1,40 +1,64 @@
-var s = document.getElementById('start');
+var start = document.getElementById('start');
+var g = document.getElementById('game');
 var r = document.getElementById('rules');
-r.style.display = 'none';
 
-function startGame() {
-  console.log('start Game');
+r.style.display = 'none';
+g.style.display = 'none';
+
+function startGoFish() {
+  if (g.style.display == 'block') {
+    g.style.display = 'none';
+  } else {
+    g.style.display = 'block';
+  }
+
+  if (start.style.display == 'none') {
+    start.style.display = 'block';
+  } else {
+    start.style.display = 'none';
+  }
+}
+
+function hideGame() {
+  g.style.display = 'block';
+  if (g.style.display == 'block') {    g.style.display = 'none';
+  } else {
+    g.style.display = 'block';
+  }
+
+  if (start.style.display == 'none') {
+    start.style.display = 'block';
+  } else {
+    start.style.display = 'none';
+  }
 }
 
 function hideRules() {
-  console.log('hide');
-
-  r.style.display = 'block';
-  if (r.style.display == 'block') {
+  r.style.display = 'block'; //hides the Rules
+  if (r.style.display == 'block') { //then shows
     r.style.display = 'none';
-  }else {
+  } else {
     r.style.display = 'block';
   }
 
-  if (s.style.display == 'block') {
-    s.style.display = 'none';
-  }else {
-    s.style.display = 'block';
+  if (start.style.display == 'block') {
+    start.style.display = 'none';
+  } else {
+    start.style.display = 'block';
   }
-
 }
 
-function rules() {
-
+function rules() { //shows the rules
   if (r.style.display == 'block') {
     r.style.display = 'none';
-  }else {
+  } else {
     r.style.display = 'block';
   }
 
-  if (s.style.display == 'none') {
-    s.style.display = 'block';
-  }else {
-    s.style.display = 'none';
+  if (start.style.display == 'none') {
+    start.style.display = 'block';
+  } else {
+    start.style.display = 'none';
   }
+
 }
