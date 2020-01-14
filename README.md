@@ -1,2 +1,2 @@
 # Go-Fish
-This is a text based go fish game that was made for a computer science class. It is played in the console of a IDE or terminal. It is only 1 player and the rest of the players are basic bots that ask a random player for a random card without any logic to it 
+This is a simple go fish game. It takes the a game I made in java and converted it to javascript so I could add visuals. There is no online or multiplayer which maybe will be added later
