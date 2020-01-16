@@ -42,11 +42,17 @@ function startGame() {
 } //startGame
 
 function setCard(input) {
+  var i;
+  i = document.getElementById('instructions');
+  i.innerHTML = 'choose a player by clicking their ask me';
   players[0].card = input;
   cardt = input.substring(0, input.length - 1);
 } //setCard
 
 function setPlayer(input) {
+  var i;
+  i = document.getElementById('instructions');
+  i.innerHTML = 'click enter to submit your choice';
   player = input;
   return player;
 } //setPlayer
@@ -63,27 +69,32 @@ function enter() {
     document.getElementById('log').scrollTop = document.getElementById('log').scrollHeight;
     document.getElementById('log').appendChild(l);
   }
+
+  document.getElementById('instructions').innerHTML = 'this is too many steps. click continue';
+
 } //enter
 
 function goOn() { //continue button but continue is taken
   yourTurn = false;
   game();
+  document.getElementById('instructions').innerHTML = "its the other players' turns";
+  setTimeout(function () {document.getElementById('instructions').innerHTML = "it's your turn";}, 1000);
 }
 
 //file:///Users/21quistai/Downloads/GoFish/goFish.html
 
 function game() {
   if (!yourTurn) {
-    var turn = 0; // = -1 because turn++ is right away. makes sure turn = 0 & ! 4
+    var turn = 0;
     turn2 = turn;
     while (turn < 3) {  // cycles through the different players turns
       if (turn > 0) {
-        //turn++;
+        //turn++; //idk why this made it work and im not going to touch it
       }
 
       turn++;
       whosTurn(turn);
-      players[turn].checkForBooks();
+      players[turn].checkForBooks(); //useless? they should already get rid of books
       if (turn != 0) { //doesn't pause on 0
         requestWhat(players[turn].chooseWho(), players[turn].chooseCard(), turn);
         if (turn == 3) {
@@ -93,8 +104,9 @@ function game() {
             players[i].printHandSize();// prints out everyones hand on the players turn
             players[i].printPairArmount();
           } //for i
-        }
-
+          //turn -= 2; doesn't work because it loops forever
+        } //if
+        //turn goes 1,3,2 because there are 2 turn++'s and once it == 3 it goes down to 1 and 2
         turn++;
       }
     } //while
@@ -105,11 +117,8 @@ function whosTurn(player) {
   var l;
   l = document.createElement('h4');
   document.getElementById('log').appendChild(l);
-  if (player == 0) l.innerHTML = "IT'S YOUR TURN";
+  if (players[player].p) l.innerHTML = "IT'S YOUR TURN";
   else l.innerHTML = "IT'S PLAYER " + player + "'S TURN";
-
-  //if (player == 0) console.log("IT'S YOUR TURN");
-  //else console.log("IT'S PLAYER " + player + "'S TURN");
 } //whosTurn
 
 function requestWhat(who, card, t) {
@@ -120,6 +129,7 @@ function requestWhat(who, card, t) {
         console.log('They have a: ' + card);//say they have the card
         printLog(who, card, t, true);
         for (var j = 0; j < players[i].hand.length; j++) {
+          //this is removing the card from player t from the index of the card in player j's hand
           // scrolls throught the players hand until it finds the card
           if (players[i].hand[j].getValue() == card) {
             // This is adding the wrong card to the hand
@@ -128,23 +138,38 @@ function requestWhat(who, card, t) {
               console.log(players[i].getHand()[j].getValue() + players[i].getHand()[j].getSuit());
             } //if
 
-            if (players[t] == players[0]) {
-              document.getElementById(players[t].getHand()[j].getValue() + players[t].getHand()[j].getSuit()).remove();
-              console.log(players[t].getHand()[j].getValue() + players[t].getHand()[j].getSuit());
-            } //if
+            //if (players[t] == players[0]) {
+            //  document.getElementById(players[t].getHand()[j].getValue() + players[t].getHand()[j].getSuit()).remove();
+            //  console.log(players[t].getHand()[j].getValue() + players[t].getHand()[j].getSuit());
+            //} //if
 
             players[i].hand.splice(j, 1);//removes the card from whoever was aked
-            players[t].hand.splice(j, 1);// myDeck.getDeck()[]adds the card to the player who asked
+            players[t].hand.splice(j, 1);// TODO: this is removing the wrong card. make another for loop for t?
             players[i].printHandSize();
             players[i].printPairArmount();
-            players[t].printHandSize();
-            players[t].printPairArmount();
-            players[t].checkForBooks();  // //TODO: useless?
+            // players[t].checkForBooks();
+            // players[t].printHandSize();
+            // players[t].printPairArmount();
           } //if (players[i].hand[j].getValue() == card)
         } //for j
+
+        for (var g = 0; g < players[t].hand.length; g++) {
+          if (players[t].hand[g].getValue() == card) {
+            //finds the index of the card that they are asking for
+            if (players[t] == players[0]) {
+              //if that player is the main player it removes the button
+              document.getElementById(players[t].getHand()[g].getValue() + players[t].getHand()[g].getSuit()).remove();
+              console.log(players[t].getHand()[g].getValue() + players[t].getHand()[g].getSuit());
+            } //if
+
+            players[t].hand.splice(g, 1);// removes the card from the hand array
+            players[t].checkForBooks(); //this might be useless
+            players[t].printHandSize(); //refreshes the hand size
+            players[t].printPairArmount(); //
+          } //if (players[i].hand[j].getValue() == card)
+        } //for j
+
       }else {
-        console.log("  They didn't have that card.");
-        if (players[t].p) console.log('  You drew a: ' + topCard); //This is broken
         printLog(who, card, t, false);
         players[t].goFish(myDeck.getDeck()[topCard]); //Adds a card to whoevers turn it was
         players[t].printHandSize();
@@ -171,10 +196,10 @@ function printLog(who, card, f, hasCard) {
 
   l = document.createElement('p');
   document.getElementById('log').appendChild(l);
-  if (hasCard == true) {
+  if (hasCard) {
     l.innerHTML = 'they have that card';
   } else {
-    l.innerHTML = 'Go Fish';
+    l.innerHTML = 'Go Fish  You drew a: ' + myDeck.getDeck()[topCard].getValue();;
   }
 
   document.getElementById('log').scrollTop = document.getElementById('log').scrollHeight;

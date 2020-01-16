@@ -10,9 +10,6 @@ body {
   padding        : 100px;
   box-sizing     : border-box;
 }
-/*
-TODO: how would you keep the button centered if the size changed
-*/
 /*Start*/
 .startButton {
   width           : 200px;
@@ -70,7 +67,7 @@ TODO: how would you keep the button centered if the size changed
   width           : 100px;
   height          : 50px;
   top             : 50%;
-  left            : 47%;
+  left            : 46%;
   border          : 2px solid black;
   border-radius   : 10px;
   background-color: inherit;
@@ -79,6 +76,20 @@ TODO: how would you keep the button centered if the size changed
 #enter:active {
   color           : white;
   background-color: black;
+}
+
+.instructions {
+  position        : absolute;
+  align-content   : center;
+  text-align      : center;
+  border-radius   : 3px;
+  width           : 200px;
+  margin-left     : -100px;
+  height          : 50px;
+  padding-bottom  : -2525px;
+  top             : 60%;
+  left            : 50%;
+  background-color: #EFFF8C;
 }
 
 .player-title {
@@ -123,6 +134,7 @@ TODO: how would you keep the button centered if the size changed
 
 .cards {
   text-align   : center;
+  /*background-color: #DDCCFF;*/
   font-size    : 30px;
   width        : 50px;
   height       : 70px;
