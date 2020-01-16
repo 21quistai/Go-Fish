@@ -22,7 +22,7 @@ function GFCard(value, suit) {
         x.setAttribute('id', this.v + this.s); //sets the Id to the value and suit
         x.setAttribute('class', 'cards'); //puts it in the right space
         x.setAttribute('onclick', 'setCard(this.id)');
-        document.getElementById('player-info').appendChild(x);//adds it to player-info
+        document.getElementById('cards').appendChild(x);//adds it to player-info
         document.getElementById(this.v + this.s).innerHTML = this.v + this.s;//Displays the text
       }, //printGFCard
 
