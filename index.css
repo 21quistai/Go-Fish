@@ -78,6 +78,16 @@ body {
   background-color: black;
 }
 
+#continue {
+  height          : 20px;
+  padding-bottom  : 20px;
+  border          : 2px solid white;
+  border-radius   : 10px;
+  background-color: inherit;
+  font-size       : 100%;
+  color           : white;
+}
+
 .instructions {
   position        : absolute;
   align-content   : center;
@@ -133,15 +143,19 @@ body {
 }
 
 .cards {
-  text-align   : center;
-  /*background-color: #DDCCFF;*/
-  font-size    : 30px;
-  width        : 50px;
-  height       : 70px;
-  bottom       : 10px;
-  margin-right : 2px;
-  border-radius: 3px;
-  font-size    : 18px;
+  text-align      : center;
+  background-color: white;
+  font-size       : 30px;
+  width           : 50px;
+  height          : 70px;
+  bottom          : 10px;
+  margin-right    : 2px;
+  border-radius   : 3px;
+  font-size       : 18px;
+}
+
+.cards:active {
+  opacity: 0.8;
 }
 
 .askMe {

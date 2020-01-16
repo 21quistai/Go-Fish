@@ -70,8 +70,8 @@ function enter() {
     document.getElementById('log').appendChild(l);
   }
 
-  document.getElementById('instructions').innerHTML = 'this is too many steps. click continue';
-
+  //document.getElementById('instructions').innerHTML = 'this is too many steps. click continue';
+  goOn();
 } //enter
 
 function goOn() { //continue button but continue is taken
@@ -145,6 +145,7 @@ function requestWhat(who, card, t) {
 
             players[i].hand.splice(j, 1);//removes the card from whoever was aked
             players[t].hand.splice(j, 1);// TODO: this is removing the wrong card. make another for loop for t?
+            players[i].checkForBooks();
             players[i].printHandSize();
             players[i].printPairArmount();
             // players[t].checkForBooks();
@@ -172,9 +173,10 @@ function requestWhat(who, card, t) {
       }else {
         printLog(who, card, t, false);
         players[t].goFish(myDeck.getDeck()[topCard]); //Adds a card to whoevers turn it was
+        players[t].checkForBooks();
         players[t].printHandSize();
         players[t].printPairArmount();
-        players[t].checkForBooks();  //checks for books in case the new card is a pair
+        //checks for books in case the new card is a pair
         topCard++;
       } //else
     } //if (players[i].n == who)

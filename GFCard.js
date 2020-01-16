@@ -17,13 +17,14 @@ function GFCard(value, suit) {
 
     printGFCard: function () {
         var x;
-        x = document.createElement('BUTTON');//creates a button
-        x.setAttribute('type', 'button');
+        x = document.createElement('IMG');//creates a button
+        //x.setAttribute('type', 'button');
         x.setAttribute('id', this.v + this.s); //sets the Id to the value and suit
+        x.setAttribute('src', 'playing cards png copy/' + this.v + this.s.toUpperCase() + '.png');
         x.setAttribute('class', 'cards'); //puts it in the right space
         x.setAttribute('onclick', 'setCard(this.id)');
         document.getElementById('cards').appendChild(x);//adds it to player-info
-        document.getElementById(this.v + this.s).innerHTML = this.v + this.s;//Displays the text
+        //document.getElementById(this.v + this.s).innerHTML = this.v + this.s;//Displays the text
       }, //printGFCard
 
     compareCardTo: function () {
