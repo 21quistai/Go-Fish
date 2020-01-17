@@ -56,7 +56,7 @@ function GFPlayer(player, playerName) {
     }, //printHandSize
 
     printPairArmount: function () { // prints the amount of pairs each player has
-      //TODO: add an id to each for design?
+      //TODO: add an id to each player for design? back of the card for how many pairs you have?
       var x;
       if (this.p) { //player 0
         x = document.getElementById('player-pair-count');
@@ -123,13 +123,11 @@ function GFPlayer(player, playerName) {
       for (var i = 0; i < this.hand.length; i++) {
         for (var j = 0; j < this.hand.length; j++) {
           //TODO: change this to a while loop in case there is a pair with the first number
+          // console.log(j + '' + i);
+          // console.log(this.getHand()[i].getValue());
+          // console.log(this.getHand()[j].getValue());
           if (i != j && this.getHand()[i].getValue() == this.getHand()[j].getValue()) {
             //// TODO: set variables for this.getHand()[i].getValue() and such?
-            /*itterates through j and i until the the values of j and i equal each other.
-             *When they equal each other, if its the player it removes the buttons
-             *It then removes the card from the hand array of everyone and loops over again
-             */
-
             //removes the card buttons \/
             if (this.p) {
               document.getElementById(
@@ -148,8 +146,8 @@ function GFPlayer(player, playerName) {
 
             this.hand.splice(j, 1);  //removes the pair
             this.hand.splice(i, 1);  //removes the pair
-            i = 0; //sets it back to 0 in case there are more than 1 pair
-            j = 0; //sets it back to 0 in case there are more than 1 pair
+            i = 0; //sets it back in case there are more than 1 pair
+            j = -1; //-1 because it will increase back to 0 before it loops again. makes sure
             this.bookCount++;
           } //if values == each other
         } //for j

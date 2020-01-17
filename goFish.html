@@ -36,7 +36,7 @@
       <button class="btn back" name=" back" onclick="hideGame()">back</button>
       <button id="enter" name="enter" onclick="enter()">Enter</button>
       <div class="instructions">
-        <p id="instructions">choose a button to ask for</p>
+        <p id="instructions">choose a card that you want to ask for</p>
       </div>
       <!--button id="continue" onclick="goOn()">continue</button-->
 
@@ -93,6 +93,11 @@
       <!--player3 div-->
     </div>
     <!--game-->
+
+    <div id="endGame">
+      <h1 style="position: absolute; top: 50%; left:50%; width: 200px; margin-left: -100px; align-text: center;">GAME OVER!</h1>
+      <h3 style="position: absolute; top: 65%; left:50%; width: 200px; margin-left: -100px; align-text: center;" id="winner"></h3>
+    </div>
 
     <script src="gofish.js" charset="utf-8"></script>
     <script src="GFCard.js" charset="utf-8"></script>
